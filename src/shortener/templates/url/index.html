@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    URL SHORTENER
+{% endblock %}
+{% block css%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div>
+    <ul class="social">
+        <li><a id="github" href="https://github.com/mariomthree/" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a id="linkedin" href="https://www.linkedin.com/in/mario-manuel-mabande-23bb891b6/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+        <li><a id="twitter" href="https://twitter.com/mariomthree" target="_blank"><i class="fab fa-twitter"></i></a></li>
+    </ul>
+</div>
+
+<form action="." method="POST" id="form" class="form">
+        {% csrf_token %}
+        <h4>URL SHORTENER</h4>
+        <div>
+            <label></label>
+            <input type="name" id="link" placeholder="Link Here">
+        </div>
+        <div>
+            <button type="submit" id="btn">Shortener</button>
+        </div>
+        <div>
+            <a id="short-link" target="_blank">---</a>
+        </div>
+    </form>
+
+{% endblock %}
+
+{% block js%}
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script>
+    $(document).on('submit', '#form', function(e){
+            e.preventDefault();
+            $.ajax({
+                type:'POST',
+                url:'/create',
+                data:{
+                    link: $('#link').val(),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                },
+                success: function(data){
+                    $("#short-link").html(location.host+"/"+data);
+                    $("#short-link").attr("href", data);
+                }
+            });
+        });
+</script>
+{% endblock %}

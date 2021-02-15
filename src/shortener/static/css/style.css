@@ -1,0 +1,56 @@
+.form{
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%);
+    width: 400px;
+    text-align: center;
+}
+
+div{
+    padding: 10px 0;
+}
+
+input{
+    height: 40px;
+    width: 100%;
+    border: 1px solid #b3b0b0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+button{
+    height: 40px;
+    width: 100%;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+}
+.copy{
+    position:absolute;
+    bottom:0;
+    left:47%;
+    transform: translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%);
+}
+.copy {
+    color: #504f4f;
+    font-size: 15px;
+    font-style: italic;
+}
+.social{
+    list-style: none
+}
+.social li{
+    height: 40px;
+    width: 40px;
+    background: #e3e3e3;
+    border-radius: 20px;
+}
+.social i{
+    color: #000;
+    padding: 10px;
+    font-size: 22px;
+}
